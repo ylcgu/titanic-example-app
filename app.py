@@ -12,6 +12,9 @@ tabtitle = 'Titanic!'
 color1='#92A5E8'
 color2='#8E44AD'
 color3='#FFC300'
+sourceurl = 'https://www.kaggle.com/c/titanic'
+githublink = 'https://github.com/austinlasseter/titanic-example-app'
+
 
 ###### Import a dataframe #######
 df = pd.read_csv("https://raw.githubusercontent.com/austinlasseter/plotly_dash_tutorial/master/00%20resources/titanic.csv")
@@ -34,7 +37,10 @@ app.layout = html.Div([
         value=variables_list[0]
     ),
     html.Br(),
-    dcc.Graph(id='display-value')
+    dcc.Graph(id='display-value'),
+    html.A('Code on Github', href=githublink),
+    html.Br(),
+    html.A("Data Source", href=sourceurl),
 ])
 
 
