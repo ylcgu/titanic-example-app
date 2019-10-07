@@ -20,7 +20,7 @@ githublink = 'https://github.com/austinlasseter/titanic-example-app'
 df = pd.read_csv("https://raw.githubusercontent.com/austinlasseter/plotly_dash_tutorial/master/00%20resources/titanic.csv")
 df['Female']=df['Sex'].map({'male':0, 'female':1})
 df['Cabin Class'] = df['Pclass'].map({1:'first', 2: 'second', 3:'third'})
-variables_list=['Survived', 'Fare','Age']
+variables_list=['Survived', 'Fare']
 
 ########### Initiate the app
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -48,7 +48,7 @@ app.layout = html.Div([
 @app.callback(dash.dependencies.Output('display-value', 'figure'),
               [dash.dependencies.Input('dropdown', 'value')])
 def display_value(continuous_var):
-    results=pd.DataFrame(df.groupby(['Age', 'Survived'])[continuous_var].mean())
+    results=pd.DataFrame(df.groupby(['Male'])[continuous_var].mean())
     # Create a grouped bar chart
     mydata1 = go.Bar(
         x=results.loc['first'].index,
